@@ -17,7 +17,9 @@
             "disablePlugins": [],
             "outputPath": ""
         },
-        "condition": false
+        "condition": false,
+        "ignoreDevUnusedFiles": false,
+        "ignoreUploadUnusedFiles": false
     },
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
