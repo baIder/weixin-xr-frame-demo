@@ -12,7 +12,7 @@
 		<xr-gltf model="anchor"></xr-gltf>
 	</xr-ar-tracker>
 	<xr-node node-id="setitem" visible="false">
-		<xr-gltf model="miku" anim-autoplay scale="0.08 0.08 0.08" rotation="0 180 0" />
+		<xr-gltf id="miku" model="miku" anim-autoplay scale="0.08 0.08 0.08" rotation="0 180 0" cube-shape="autoFit:true" bind:touch-shape="handleTouchModel" />
 	</xr-node>
 
 	<xr-camera clear-color="0.4 0.8 0.6 1" background="ar" is-ar-camera />

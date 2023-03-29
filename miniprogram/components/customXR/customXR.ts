@@ -21,14 +21,13 @@ Component({
       this.scene = detail.value;
     },
     handleAssetsLoaded: function ({ detail }: { detail: any }) {
-      wx.showToast({ title: "点击屏幕放置" });
-      this.scene.event.add("touchstart", () => {
-        this.scene.ar.placeHere("setitem", true);
-        console.log(111);
-      });
+      if (detail.value) wx.showToast({ title: `识别成功` });
     },
-    handleTrackerSwitch: function ({ detail }: { detail: any }) {
-      console.log(detail.value);
+    handleTouchModel: function ({ detail }: { detail: any }) {
+      const { target } = detail.value;
+      const id = target.id;
+
+      this.triggerEvent("onModelTapped", id);
     },
   },
 });

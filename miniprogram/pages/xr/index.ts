@@ -8,6 +8,7 @@ Page({
     height: 300,
     renderWidth: 300,
     renderHeight: 300,
+    loaded: false,
   },
 
   /**
@@ -24,5 +25,13 @@ Page({
       renderWidth: width * dpi,
       renderHeight: height * dpi,
     });
+  },
+  handleModelTapped: function ({ detail }) {
+    this.setData({ loaded: true });
+  },
+  handleWrapperTap: function (e) {
+    wx.showToast({ title: "点击wrapper" });
+    this.setData({ loaded: false });
+    e.stopPropagation();
   },
 });

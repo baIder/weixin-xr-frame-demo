@@ -17,5 +17,17 @@ Component({
     handleReady: function ({ detail }: { detail: any }) {
       this.scene = detail.value;
     },
+    handleAssetsLoaded: function ({ detail }) {
+      wx.showToast({ title: "点击屏幕放置" });
+      this.scene.event.add("touchstart", () => {
+        this.scene.ar.placeHere("setitem", true);
+      });
+    },
+    handleTouchModel: function ({ detail }) {
+      const { target } = detail.value;
+      const id = target.id;
+
+      wx.showToast({ title: `模型： ${id}` });
+    },
   },
 });
