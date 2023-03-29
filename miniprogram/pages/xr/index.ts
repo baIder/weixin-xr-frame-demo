@@ -8,11 +8,6 @@ Page({
     height: 300,
     renderWidth: 300,
     renderHeight: 300,
-    loaded: false,
-    positions: [
-      [0, 0, "rgba(44, 44, 44, 0.5)", ""],
-      [0, 0, "rgba(44, 44, 44, 0.5)", ""],
-    ],
   },
 
   /**
