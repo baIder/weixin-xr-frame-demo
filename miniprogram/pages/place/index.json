@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "custom-place": "../../components/customPlace/index"
+  }
+}
