@@ -1,29 +1,19 @@
-<xr-scene ar-system="modes:Marker" bind:ready="handleReady">
-	<!-- <xr-scene ar-system="modes:Marker" bind:ready="handleReady"> -->
+<xr-scene ar-system="modes:Plane" bind:ready="handleReady">
+	<xr-assets bind:loaded="handleAssetsLoaded">
+		<xr-asset-load type="gltf" asset-id="anchor" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/ar-plane-marker.glb" />
+		<xr-asset-load type="gltf" asset-id="miku" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/miku.glb" />
+	</xr-assets>
+
+	<xr-env env-data="xr-frame-team-workspace-day" />
 	<xr-light type="ambient" color="1 1 1" intensity="1" />
 	<xr-light type="directional" rotation="40 70 0" color="1 1 1" intensity="3" cast-shadow />
 
-	<xr-assets bind:loaded="handleAssetsLoaded">
-		<xr-asset-material asset-id="mat" effect="simple" uniforms="u_baseColorFactor: 0.8 0.6 0.4 0.7" states="alphaMode:BLEND" />
-		<xr-asset-load type="gltf" asset-id="gltfModel" src="https://staticfile-cdn.sightp.com/easyar/webar/mini-tracking/xiaoxiongmao.glb" />
-	</xr-assets>
-
-	<xr-node>
-		<xr-ar-tracker mode="Marker" src="/assets/test2.jpg" bind:ar-tracker-switch="handleTrackerSwitch">
-			<!-- <xr-mesh geometry="plane" material="mat" rotation="-90 0 0" /> -->
-			<xr-node node-id="node1" position="0 0 0" scale=".5 .5 .5">
-				<xr-gltf cast-shadow id="myGLTF" model="gltfModel" anim-autoplay></xr-gltf>
-			</xr-node>
-		</xr-ar-tracker>
+	<xr-ar-tracker mode="Plane">
+		<xr-gltf model="anchor"></xr-gltf>
+	</xr-ar-tracker>
+	<xr-node node-id="setitem" visible="false">
+		<xr-gltf model="miku" anim-autoplay scale="0.08 0.08 0.08" rotation="0 180 0" />
 	</xr-node>
-	<!-- <xr-node rotation="0 0 90">
-		<xr-node node-id="node1" position="0 0 0" scale=".5 .5 .5">
-			<xr-gltf cast-shadow id="myGLTF" model="gltfModel" anim-autoplay></xr-gltf>
-		</xr-node>
-
-		<xr-mesh position="0 0 0" scale="1 1 1" receive-shadow geometry="plane" uniforms="u_baseColorFactor:0.4 0.6 0.8 1" />
-	</xr-node> -->
 
 	<xr-camera clear-color="0.4 0.8 0.6 1" background="ar" is-ar-camera />
-	<!-- <xr-camera clear-color="0.4 0.8 0.6 1" position="0 1 4" target="node1" camera-orbit-control /> -->
 </xr-scene>

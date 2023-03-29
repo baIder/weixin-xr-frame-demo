@@ -1,23 +1,21 @@
 // components/customPlace/index.ts
 Component({
-    /**
-     * 组件的属性列表
-     */
-    properties: {
+  /**
+   * 组件的属性列表
+   */
+  properties: {},
 
+  /**
+   * 组件的初始数据
+   */
+  data: {},
+
+  /**
+   * 组件的方法列表
+   */
+  methods: {
+    handleReady: function ({ detail }: { detail: any }) {
+      this.scene = detail.value;
     },
-
-    /**
-     * 组件的初始数据
-     */
-    data: {
-
-    },
-
-    /**
-     * 组件的方法列表
-     */
-    methods: {
-
-    }
-})
+  },
+});
