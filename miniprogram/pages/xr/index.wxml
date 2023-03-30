@@ -3,7 +3,7 @@
 	<view class="wrapper" wx:if="{{loaded}}" bindtap="handleWrapperTap">
 		<view class="content">
 			<view class="presentation" wx:if="{{xrVisible}}">
-				<presentation disable-scroll width="500" height="500" style="width:500rpx;height:500rpx;" />
+				<presentation disable-scroll width="500" height="500" style="width:500rpx;height:500rpx;" model-id="{{model_id}}" />
 			</view>
 			<button catchtap="goPlace">摆摆看</button>
 		</view>

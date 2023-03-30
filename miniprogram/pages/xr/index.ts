@@ -10,6 +10,7 @@ Page({
     renderHeight: 300,
     loaded: false,
     xrVisible: true,
+    model_id: "",
   },
 
   /**
@@ -27,14 +28,12 @@ Page({
       renderHeight: height * dpi,
     });
   },
-  handleModelTapped: function () {
+  handleModelTapped: function ({ detail }: { detail: string }) {
+    this.setData({ model_id: detail });
     this.setData({ loaded: true });
   },
   handleWrapperTap: function () {
-    wx.showToast({ title: "点击wrapper" });
-    setTimeout(() => {
-      this.setData({ loaded: false });
-    }, 500);
+    this.setData({ loaded: false });
   },
   goPlace: function () {
     this.setData({ xrVisible: false });

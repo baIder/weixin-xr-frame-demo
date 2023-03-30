@@ -1,4 +1,4 @@
-<xr-scene>
+<xr-scene bind:ready="handleReady">
 	<xr-env env-data="xr-frame-team-workspace-day" />
 
 	<xr-light type="ambient" color="1 1 1" intensity="1" />
@@ -8,7 +8,9 @@
 		<xr-asset-load type="gltf" asset-id="damage-helmet" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/damage-helmet/index.glb" />
 	</xr-assets>
 
-	<xr-gltf node-id="damage-helmet" model="damage-helmet" />
+	<xr-shadow id="shadow-node" />
+	<xr-node scale="0.1 0.1 0.1" node-id="defalut-node">
+	</xr-node>
 
-	<xr-camera clear-color="0.4 0.8 0.6 1" position="0 1 4" target="damage-helmet" camera-orbit-control />
+	<xr-camera clear-color="0.4 0.8 0.6 1" position="0 1 4" target="defalut-node" camera-orbit-control />
 </xr-scene>
