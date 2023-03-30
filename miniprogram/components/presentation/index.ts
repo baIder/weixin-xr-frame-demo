@@ -27,10 +27,11 @@ Component({
       const scene = (this.data.scene = detail.value);
       const assetItem = mockData.find((i) => i.id === this.properties.modelId);
       if (!assetItem) return;
-      const { value: loadedAsset } = await scene.assets.loadAsset<any>({
+      const { value: loadedAsset } = await scene.assets.loadAsset({
         type: "gltf",
         assetId: this.properties.modelId,
         src: assetItem.model,
+        options: {},
       });
       const xrFrameSystem = wx.getXrFrameSystem();
       const shadow = scene.getElementById("shadow-node");
@@ -45,7 +46,7 @@ Component({
         .getComponent(xrFrameSystem.Transform)
         .position.setArray([
           assetItem.position[0],
-          assetItem.position[1] - 1,
+          assetItem.position[1],
           assetItem.position[2],
         ]);
       gltfElement
