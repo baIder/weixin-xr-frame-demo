@@ -9,11 +9,8 @@
 
 	<xr-node>
 		<xr-ar-tracker mode="Marker" src="/assets/test2.jpg" bind:ar-tracker-switch="handleTrackerSwitch">
-			<!-- <xr-node node-id="node1" scale=".5 .5 .5">
-				<xr-gltf cast-shadow id="myGLTF" model="gltfModel" anim-autoplay mesh-shape bind:touch-shape="handleTouchModel"></xr-gltf>
-			</xr-node> -->
 			<xr-node scale="0.08 0.08 0.08" rotation="0 180 0">
-				<xr-gltf cast-shadow id="myGLTF" model="miku" anim-autoplay cube-shape="autoFit:true" bind:touch-shape="handleTouchModel"></xr-gltf>
+				<xr-gltf id="myGLTF" model="miku" anim-autoplay cube-shape="autoFit:true" bind:touch-shape="handleTouchModel"></xr-gltf>
 			</xr-node>
 		</xr-ar-tracker>
 	</xr-node>

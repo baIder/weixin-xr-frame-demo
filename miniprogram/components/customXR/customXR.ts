@@ -18,9 +18,9 @@ Component({
    */
   methods: {
     handleReady: function ({ detail }: { detail: any }) {
-      this.scene = detail.value;
+      this.data.scene = detail.value;
     },
-    handleAssetsLoaded: function ({ detail }: { detail: any }) {
+    handleTrackerSwitch: function ({ detail }: { detail: any }) {
       if (detail.value) wx.showToast({ title: `识别成功` });
     },
     handleTouchModel: function ({ detail }: { detail: any }) {
