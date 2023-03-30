@@ -9,6 +9,7 @@ Page({
     renderWidth: 300,
     renderHeight: 300,
     loaded: false,
+    xrVisible: true,
   },
 
   /**
@@ -26,12 +27,17 @@ Page({
       renderHeight: height * dpi,
     });
   },
-  handleModelTapped: function ({ detail }) {
+  handleModelTapped: function () {
     this.setData({ loaded: true });
   },
-  handleWrapperTap: function (e) {
+  handleWrapperTap: function () {
     wx.showToast({ title: "点击wrapper" });
-    this.setData({ loaded: false });
-    e.stopPropagation();
+    setTimeout(() => {
+      this.setData({ loaded: false });
+    }, 500);
+  },
+  goPlace: function () {
+    this.setData({ xrVisible: false });
+    wx.navigateTo({ url: "/pages/place/index" });
   },
 });

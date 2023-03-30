@@ -8,7 +8,7 @@
 	</xr-assets>
 
 	<xr-node>
-		<xr-ar-tracker mode="Marker" src="/assets/test2.jpg" bind:ar-tracker-switch="handleTrackerSwitch">
+		<xr-ar-tracker mode="Marker" src="/assets/miku.jpg" bind:ar-tracker-switch="handleTrackerSwitch">
 			<xr-node scale="0.08 0.08 0.08" rotation="0 180 0">
 				<xr-gltf id="myGLTF" model="miku" anim-autoplay cube-shape="autoFit:true" bind:touch-shape="handleTouchModel"></xr-gltf>
 			</xr-node>

@@ -9,7 +9,6 @@ Component({
    * 组件的初始数据
    */
   data: {
-    avatarTextureId: "white",
     scene: {},
   },
 

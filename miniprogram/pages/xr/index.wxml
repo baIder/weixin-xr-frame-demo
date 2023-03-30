@@ -1,11 +1,11 @@
 <view>
-	<custom-xr wx:if="{{!loaded}}" disable-scroll id="main-frame" width="{{renderWidth}}" height="{{renderHeight}}" style="width:{{width}}px;height:{{height}}px;" bind:onModelTapped="handleModelTapped" class="xr-frame" />
+	<custom-xr wx:if="{{!loaded && xrVisible}}" disable-scroll id="main-frame" width="{{renderWidth}}" height="{{renderHeight}}" style="width:{{width}}px;height:{{height}}px;" bind:onModelTapped="handleModelTapped" class="xr-frame" />
 	<view class="wrapper" wx:if="{{loaded}}" bindtap="handleWrapperTap">
 		<view class="content">
-			<view class="presentation">
+			<view class="presentation" wx:if="{{xrVisible}}">
 				<presentation disable-scroll width="500" height="500" style="width:500rpx;height:500rpx;" />
 			</view>
-			<button>摆摆看</button>
+			<button catchtap="goPlace">摆摆看</button>
 		</view>
 	</view>
 </view>

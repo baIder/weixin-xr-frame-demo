@@ -1,10 +1,14 @@
 <xr-scene>
+	<xr-env env-data="xr-frame-team-workspace-day" />
+
 	<xr-light type="ambient" color="1 1 1" intensity="1" />
 	<xr-light type="directional" rotation="40 70 0" color="1 1 1" intensity="3" cast-shadow />
 
-	<xr-asset-material asset-id="simple" effect="simple" uniforms="u_baseColorFactor:0.8 0.4 0.4 1" />
+	<xr-assets>
+		<xr-asset-load type="gltf" asset-id="damage-helmet" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/damage-helmet/index.glb" />
+	</xr-assets>
 
-	<xr-mesh node-id="cube" cast-shadow geometry="cube" uniforms="u_baseColorFactor:0.8 0.4 0.4 1" />
-	<xr-mesh position="0 -1 0" scale="4 1 4" receive-shadow geometry="plane" uniforms="u_baseColorFactor:0.4 0.6 0.8 1" />
-	<xr-camera clear-color="0.4 0.8 0.6 1" position="0 1 4" target="cube" camera-orbit-control />
+	<xr-gltf node-id="damage-helmet" model="damage-helmet" />
+
+	<xr-camera clear-color="0.4 0.8 0.6 1" position="0 1 4" target="damage-helmet" camera-orbit-control />
 </xr-scene>
