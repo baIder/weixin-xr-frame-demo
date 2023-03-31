@@ -1,7 +1,6 @@
 <xr-scene ar-system="modes:Plane" bind:ready="handleReady">
 	<xr-assets bind:loaded="handleAssetsLoaded">
 		<xr-asset-load type="gltf" asset-id="anchor" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/ar-plane-marker.glb" />
-		<!-- <xr-asset-load type="gltf" asset-id="miku" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/miku.glb" /> -->
 	</xr-assets>
 
 	<xr-env env-data="xr-frame-team-workspace-day" />
