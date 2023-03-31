@@ -45,11 +45,7 @@ Component({
         .scale.setArray(assetItem.scale);
       gltfElement
         .getComponent(xrFrameSystem.Transform)
-        .position.setArray([
-          assetItem.position[0],
-          assetItem.position[1],
-          assetItem.position[2],
-        ]);
+        .position.setArray(assetItem.position);
       gltfElement
         .getComponent(xrFrameSystem.Transform)
         .rotation.setArray(assetItem.rotation);
