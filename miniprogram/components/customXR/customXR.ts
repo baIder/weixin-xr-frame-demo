@@ -39,17 +39,18 @@ Component({
         });
         shadow.addChild(arTracker);
 
+        const node = scene.createElement(xrFrameSystem.XRNode, {
+          visible: "false",
+        });
+
         const trackerComp = arTracker.getComponent(xrFrameSystem.ARTracker);
         trackerComp.el.event.add("ar-tracker-switch", (track: boolean) => {
+          node.setAttribute("visible", track.toString());
           if (track) {
             wx.showToast({ title: "成功" });
           } else {
             wx.showToast({ title: "失败" });
           }
-        });
-
-        const node = scene.createElement(xrFrameSystem.XRNode, {
-          visible: "false",
         });
         arTracker.addChild(node);
 
