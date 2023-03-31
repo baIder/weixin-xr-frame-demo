@@ -37,6 +37,11 @@ Page({
   },
   goPlace: function () {
     this.setData({ xrVisible: false });
-    wx.navigateTo({ url: "/pages/place/index" });
+    wx.navigateTo({
+      url: "/pages/place/index",
+      success: (res) => {
+        res.eventChannel.emit("acceptModelId", { modelId: this.data.model_id });
+      },
+    });
   },
 });

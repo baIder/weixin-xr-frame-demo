@@ -8,7 +8,7 @@ Component({
   properties: {
     modelId: {
       type: String,
-      value: "default value",
+      value: "",
     },
   },
 

@@ -1,5 +1,5 @@
 <view>
-	<custom-xr wx:if="{{!loaded && xrVisible}}" disable-scroll id="main-frame" width="{{renderWidth}}" height="{{renderHeight}}" style="width:{{width}}px;height:{{height}}px;" bind:onModelTapped="handleModelTapped" class="xr-frame" />
+	<custom-xr wx:if="{{!loaded && xrVisible}}" disable-scroll id="xr-frame" width="{{renderWidth}}" height="{{renderHeight}}" style="width:{{width}}px;height:{{height}}px;" bind:onModelTapped="handleModelTapped" class="xr-frame" />
 	<view class="wrapper" wx:if="{{loaded}}" bindtap="handleWrapperTap">
 		<view class="content">
 			<view class="presentation" wx:if="{{xrVisible}}">

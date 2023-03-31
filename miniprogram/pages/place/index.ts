@@ -8,6 +8,7 @@ Page({
     height: 300,
     renderWidth: 300,
     renderHeight: 300,
+    model_id: "",
   },
 
   /**
@@ -23,6 +24,11 @@ Page({
       height,
       renderWidth: width * dpi,
       renderHeight: height * dpi,
+    });
+
+    const eventChannel = this.getOpenerEventChannel();
+    eventChannel.on("acceptModelId", ({ modelId }: { modelId: string }) => {
+      this.setData({ model_id: modelId });
     });
   },
 });
