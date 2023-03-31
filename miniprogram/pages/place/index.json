@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "custom-place": "../../components/customPlace/index"
-  }
+  },
+  "disableScroll": true
 }

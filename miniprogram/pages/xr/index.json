@@ -2,5 +2,6 @@
   "usingComponents": {
     "custom-xr": "../../components/customXR/customXR",
     "presentation": "../../components/presentation/index"
-  }
+  },
+  "disableScroll": true
 }

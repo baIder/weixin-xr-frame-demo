@@ -26,6 +26,7 @@ Component({
     handleReady: async function ({ detail }: { detail: { value: Scene } }) {
       const scene = (this.data.scene = detail.value);
       const assetItem = mockData.find((i) => i.id === this.properties.modelId);
+      wx.showToast({ title: this.properties.modelId });
       if (!assetItem) return;
       const { value: loadedAsset } = await scene.assets.loadAsset({
         type: "gltf",

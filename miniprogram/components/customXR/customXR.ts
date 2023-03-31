@@ -39,24 +39,18 @@ Component({
         });
         shadow.addChild(arTracker);
 
-        const tracker = arTracker.getComponent(xrFrameSystem.ARTracker);
-        tracker.el.event.add("ar-tracker-switch", this.handleTrackerSwitch);
-
         const node = scene.createElement(xrFrameSystem.XRNode);
         arTracker.addChild(node);
 
+        const nodeComp = node.getComponent(xrFrameSystem.Transform);
+
+        nodeComp.scale.setArray(i.scale);
+        nodeComp.position.setArray(i.position);
+        nodeComp.rotation.setArray(i.rotation);
+
         const gltfElement = scene.createElement(xrFrameSystem.XRGLTF);
         node.addChild(gltfElement);
-
-        gltfElement
-          .getComponent(xrFrameSystem.Transform)
-          .scale.setArray(i.scale);
-        gltfElement
-          .getComponent(xrFrameSystem.Transform)
-          .position.setArray(i.position);
-        gltfElement
-          .getComponent(xrFrameSystem.Transform)
-          .rotation.setArray(i.rotation);
+        gltfElement.setId(i.id);
 
         const gltfComp = gltfElement.getComponent(xrFrameSystem.GLTF);
 
@@ -64,29 +58,22 @@ Component({
           model: scene.assets.getAsset("gltf", i.id),
         });
 
+        // gltfElement.addComponent(xrFrameSystem.MeshShape);
         gltfElement.addComponent(xrFrameSystem.CubeShape, {
           autoFit: true,
         });
 
-        gltfComp.el.event.add("touch-shape", this.handleTouchModel);
+        gltfElement.addComponent(xrFrameSystem.ShapeGizmos);
+
+        gltfComp.el.event.add("touch-shape", () => {
+          wx.showToast({ title: i.id });
+          this.triggerEvent("onModelTapped", i.id);
+        });
 
         gltfElement
           .getComponent(xrFrameSystem.Animator)
           .setData({ autoPlay: {} });
       });
-    },
-    handleTrackerSwitch: function () {
-      // handleTrackerSwitch: function ({ detail }: { detail: any }) {
-      wx.showToast({ title: "arTracker" });
-      // if (detail.value) wx.showToast({ title: "识别成功" });
-    },
-    handleTouchModel: function () {
-      // handleTouchModel: function ({ detail }: { detail: any }) {
-      wx.showToast({ title: "点击模型" });
-      // const { target } = detail.value;
-      // const id = target.id;
-
-      // this.triggerEvent("onModelTapped", id);
     },
   },
 });

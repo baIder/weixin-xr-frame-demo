@@ -1,4 +1,6 @@
 {
-	"files.autoSave": "onFocusChange",
-	"editor.formatOnSave": true
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "JetBrains Mono, Fira Code, '阿里巴巴普惠体','微软雅黑', Consolas, 'Courier New', monospace",
+  "editor.lineHeight": 18
 }
