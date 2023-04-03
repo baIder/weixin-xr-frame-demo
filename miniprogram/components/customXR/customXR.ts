@@ -72,6 +72,7 @@ Component({
 
         trackerComp.el.event.add("ar-tracker-switch", (track: boolean) => {
           if (track) {
+            wx.showToast({ title: i.id });
             gltfElement.addComponent(xrFrameSystem.CubeShape, {
               autoFit: true,
             });
