@@ -1,4 +1,4 @@
-import { Scene, XRARTracker } from "XrFrame";
+import { Scene } from "XrFrame";
 import { mockData } from "../../mock/data";
 
 // components/customXR/customXR.ts
@@ -11,10 +11,7 @@ Component({
   /**
    * 组件的初始数据
    */
-  data: {
-    scene: {} as Scene,
-    trackerList: {} as { [key: string]: XRARTracker },
-  },
+  data: {},
 
   /**
    * 组件的方法列表
@@ -37,32 +34,25 @@ Component({
           mode: "Marker",
           src: i.image,
         });
+        arTracker
+          .getComponent(xrFrameSystem.Transform)
+          .setData({ nodeId: i.id + "Tracker" });
         shadow.addChild(arTracker);
 
-        const node = scene.createElement(xrFrameSystem.XRNode, {
-          visible: "false",
-        });
+        const node = scene.createElement(xrFrameSystem.XRNode);
 
         const trackerComp = arTracker.getComponent(xrFrameSystem.ARTracker);
-        trackerComp.el.event.add("ar-tracker-switch", (track: boolean) => {
-          node.setAttribute("visible", track.toString());
-          if (track) {
-            wx.showToast({ title: "成功" });
-          } else {
-            wx.showToast({ title: "失败" });
-          }
-        });
         arTracker.addChild(node);
 
         const nodeComp = node.getComponent(xrFrameSystem.Transform);
 
+        nodeComp.setData({ nodeId: i.id });
         nodeComp.scale.setArray(i.scale);
         nodeComp.position.setArray(i.position);
         nodeComp.rotation.setArray(i.rotation);
 
         const gltfElement = scene.createElement(xrFrameSystem.XRGLTF);
         node.addChild(gltfElement);
-        gltfElement.setId(i.id);
 
         const gltfComp = gltfElement.getComponent(xrFrameSystem.GLTF);
 
@@ -70,21 +60,25 @@ Component({
           model: scene.assets.getAsset("gltf", i.id),
         });
 
-        // gltfElement.addComponent(xrFrameSystem.MeshShape);
-        gltfElement.addComponent(xrFrameSystem.CubeShape, {
-          autoFit: true,
-        });
-
-        gltfElement.addComponent(xrFrameSystem.ShapeGizmos);
+        // gltfElement.addComponent(xrFrameSystem.ShapeGizmos);
 
         gltfComp.el.event.add("touch-shape", () => {
-          wx.showToast({ title: i.id });
           this.triggerEvent("onModelTapped", i.id);
         });
 
         gltfElement
           .getComponent(xrFrameSystem.Animator)
           .setData({ autoPlay: {} });
+
+        trackerComp.el.event.add("ar-tracker-switch", (track: boolean) => {
+          if (track) {
+            gltfElement.addComponent(xrFrameSystem.CubeShape, {
+              autoFit: true,
+            });
+          } else {
+            gltfElement.removeComponent(xrFrameSystem.CubeShape);
+          }
+        });
       });
     },
   },
