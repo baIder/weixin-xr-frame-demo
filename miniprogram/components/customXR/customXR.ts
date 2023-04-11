@@ -41,7 +41,6 @@ Component({
 
         const node = scene.createElement(xrFrameSystem.XRNode);
 
-        const trackerComp = arTracker.getComponent(xrFrameSystem.ARTracker);
         arTracker.addChild(node);
 
         const nodeComp = node.getComponent(xrFrameSystem.Transform);
@@ -60,7 +59,11 @@ Component({
           model: scene.assets.getAsset("gltf", i.id),
         });
 
-        // gltfElement.addComponent(xrFrameSystem.ShapeGizmos);
+        gltfElement.addComponent(xrFrameSystem.CubeShape, {
+          autoFit: true,
+        });
+
+        gltfElement.addComponent(xrFrameSystem.ShapeGizmos);
 
         gltfComp.el.event.add("touch-shape", () => {
           this.triggerEvent("onModelTapped", i.id);
@@ -69,17 +72,6 @@ Component({
         gltfElement
           .getComponent(xrFrameSystem.Animator)
           .setData({ autoPlay: {} });
-
-        trackerComp.el.event.add("ar-tracker-switch", (track: boolean) => {
-          if (track) {
-            wx.showToast({ title: i.id });
-            gltfElement.addComponent(xrFrameSystem.CubeShape, {
-              autoFit: true,
-            });
-          } else {
-            gltfElement.removeComponent(xrFrameSystem.CubeShape);
-          }
-        });
       });
     },
   },
